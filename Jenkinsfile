@@ -32,6 +32,8 @@ pipeline {
 
             steps {
                 unstash 'maven_build'
+                sh 'ls /var/lib/cloudbees-jenkins-distribution/workspace/devops_sample-java-spring_master/target/appengine-staging'
+                sh 'cat /var/lib/cloudbees-jenkins-distribution/workspace/devops_sample-java-spring_master/target/appengine-staging/app.yaml'
                 sh 'mvn appengine:deploy'
             }
         }
