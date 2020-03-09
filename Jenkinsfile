@@ -11,7 +11,7 @@ pipeline {
         stage('Build') { 
             steps {
                 sh 'mvn package' 
-                stash name: 'maven_build' includes: 'target/**'
+                stash name: 'maven_build', includes: 'target/**'
             }
         }
 
