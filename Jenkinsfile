@@ -11,6 +11,25 @@ pipeline {
         stage('Build') { 
             steps {
                 sh 'mvn package' 
+                stash name: 'maven_build' includes: 'target/**'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                unstash 'maven_build'
+                sh 'mvn verify'
+            }
+        }
+
+        stage('Deploy') {
+            when {
+                branch 'master'
+            }
+
+            steps {
+                unstash 'maven_build'
+                sh 'mvn package appengine:deploy'
             }
         }
     }
