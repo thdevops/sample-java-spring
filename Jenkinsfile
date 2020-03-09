@@ -32,7 +32,7 @@ pipeline {
 
             steps {
                 unstash 'maven_build'
-                sh 'mvn package appengine:deploy'
+                sh 'mvn appengine:deploy'
             }
         }
     }
