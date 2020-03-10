@@ -26,9 +26,7 @@ pipeline {
         }
 
         stage('Deploy') {
-            agent {
-                any
-            }
+            agent any
             when {
                 branch 'master'
             }
