@@ -43,7 +43,6 @@ pipeline {
                         appName: 'thdevops-test',
                         memory: 128,
                         instances: 1,
-                        services: ['mysql-spring'],
                         appPath: 'target/springboot-appengine-standard-0.0.1-SNAPSHOT.war'
                     ]
                 )
