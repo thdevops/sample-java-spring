@@ -8,6 +8,7 @@ pipeline {
         //}
         docker {
             image 'tenjaa/maven-cf'
+            args '-u root'
         }
     }
     stages {
