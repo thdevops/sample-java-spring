@@ -33,6 +33,7 @@ pipeline {
             steps {
                 sh 'ls /var/lib/cloudbees-jenkins-distribution/workspace/devops_sample-java-spring_master/target'
                 sh 'ls /var/lib/cloudbees-jenkins-distribution/workspace/devops_sample-java-spring_master/target/springboot-appengine-standard-0.0.1-SNAPSHOT'
+                sh 'while :; do sleep 1; done'
                 sh 'mvn -e -X appengine:deploy'
             }
         }
