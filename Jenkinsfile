@@ -38,24 +38,6 @@ pipeline {
                         CF_HOME=$(pwd) cf push thdevops-test -p ./target/springboot-appengine-standard-0.0.1-SNAPSHOT.war
                     '''
                 }
-//                sh 'CF_HOME=$(pwd) export'
-//                sh 'while :; do sleep 1; done'
-
-//                sh 'CF_HOME=$(pwd) cf push thdevops-test -p ./target/springboot-appengine-standard-0.0.1-SNAPSHOT.war'
-                // pushToCloudFoundry(
-                //     target: 'api.run.pivotal.io',
-                //     organization: 'aurelien',
-                //     cloudSpace: 'development',
-                //     credentialsId: 'pcfdev_user',
-                //     selfSigned: 'true',
-                //     manifestChoice: [
-                //         value: 'jenkinsConfig',
-                //         appName: 'thdevops-test',
-                //         memory: 128,
-                //         instances: 1,
-                //         appPath: 'target/springboot-appengine-standard-0.0.1-SNAPSHOT.war'
-                //     ]
-                // )
             }
         }
     }
