@@ -7,8 +7,7 @@ pipeline {
         //    defaultContainer 'maven'  // define a default container if more than a few stages use it, will default to jnlp container
         //}
         docker {
-            image 'maven:3-jdk-8'
-            args '-v $HOME/.m2:/root/.m2'
+            image 'tenjaa/maven-cf'
         }
     }
     stages {
@@ -32,10 +31,22 @@ pipeline {
             }
 
             steps {
-                sh 'ls /var/lib/cloudbees-jenkins-distribution/workspace/devops_sample-java-spring_master/target'
-                sh 'ls /var/lib/cloudbees-jenkins-distribution/workspace/devops_sample-java-spring_master/target/springboot-appengine-standard-0.0.1-SNAPSHOT'
-                //sh 'while :; do sleep 1; done'
-                sh 'mvn -e -X appengine:deploy'
+                unstash 'maven_build'
+                pushToCloudFoundry(
+                    target: 'api.run.pivotal.io',
+                    organization: 'aurelien',
+                    cloudSpace: 'development',
+                    credentialsId: 'pcfdev_user',
+                    selfSigned: true,
+                    manifestChoice: [
+                        value: 'jenkinsConfig',
+                        appName: 'thdevops-test',
+                        memory: 128,
+                        instances: 1,
+                        services: ['mysql-spring'],
+                        appPath: 'target/springboot-appengine-standard-0.0.1-SNAPSHOT.war'
+                    ]
+                )
             }
         }
     }
