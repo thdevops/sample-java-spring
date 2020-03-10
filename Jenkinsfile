@@ -33,7 +33,7 @@ pipeline {
 
             steps {
                 unstash 'maven_build'
-                sh 'while :; do sleep 1; done'
+                // sh 'while :; do sleep 1; done'
                 sh 'cf push thdevops-test -p ./target/springboot-appengine-standard-0.0.1-SNAPSHOT.war'
                 // pushToCloudFoundry(
                 //     target: 'api.run.pivotal.io',
