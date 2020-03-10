@@ -37,7 +37,7 @@ pipeline {
                     organization: 'aurelien',
                     cloudSpace: 'development',
                     credentialsId: 'pcfdev_user',
-                    selfSigned: true,
+                    selfSigned: 'true',
                     manifestChoice: [
                         value: 'jenkinsConfig',
                         appName: 'thdevops-test',
