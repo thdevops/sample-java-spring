@@ -28,13 +28,9 @@ pipeline {
         }
 
         stage('Deploy') {
-            when {
-                branch 'master'
-            }
-
             steps {
                 unstash 'maven_build'
-                cfDeploy(target: "./target/springboot-appengine-standard-0.0.1-SNAPSHOT.war", service: "development")
+                cfDeploy(target: "./target/springboot-appengine-standard-0.0.1-SNAPSHOT.war", service: "Team A development space")
             }
         }
     }
