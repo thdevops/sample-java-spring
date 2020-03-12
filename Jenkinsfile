@@ -30,7 +30,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 unstash 'maven_build'
-                cfDeploy(target: "./target/springboot-appengine-standard-0.0.1-SNAPSHOT.war", service: "Team A development space")
+                cfDeploy(target: "./target/springboot-appengine-standard-0.0.1-SNAPSHOT.war", space: "Team A development space")
             }
         }
     }
