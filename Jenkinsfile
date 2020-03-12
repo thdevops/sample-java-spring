@@ -32,12 +32,7 @@ pipeline {
 
             steps {
                 unstash 'maven_build'
-                withCredentials([usernamePassword(credentialsId: 'pcfdev_user', usernameVariable: 'username', passwordVariable: 'password')]) {
-                    sh '''
-                        CF_HOME=$(pwd) cf login -a api.run.pivotal.io -u \"${username}\" -p \"${password}\" -o aurelien -s development
-                        CF_HOME=$(pwd) cf push thdevops-test -p ./target/springboot-appengine-standard-0.0.1-SNAPSHOT.war
-                    '''
-                }
+                cfDeploy(target: "./target/springboot-appengine-standard-0.0.1-SNAPSHOT.war", service: "development")
             }
         }
     }
