@@ -1,5 +1,5 @@
 @Library('shared-libraries') _
 
-mavenPipeline(
+mavenPipeline{
     space: "Team A development space"
-)
+}
