@@ -23,6 +23,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloworldController {
   @GetMapping("/")
   public String hello() {
-    return "Hello world - springboot-appengine-standard on CloudFoundation! - test";
+    return "Hello world - springboot-appengine-standard - Feature de test";
   }
 }
